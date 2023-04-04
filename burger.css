@@ -1,0 +1,74 @@
+#burger, [for=burger]{
+    display: none;
+}
+@media screen and (max-width: 550px) {
+    .menu{
+        display: flex;
+        flex-direction: column;
+        align-item: center;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+        background: linear-gradient(90deg, rgba(119,119,119,1) 5%, rgba(119,119,119,0.9698004201680672) 100%, rgba(118,107,107,0.01) 100%);
+        backdrop-filter: blur(15px);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        margin-bottom: 30px;
+    }
+    .menu-item{
+        color: #000000;
+        margin-right: 0;
+    }
+    .menu li{
+        padding: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+    .menu-item:hover{
+        scale: 1.1;
+    }
+    [for=burger]{
+        display: block;
+        position: fixed;
+        width: 30px;
+        text-align: center;
+        right: 20px;
+        top: 10px;
+    }
+    [for=burger]::before{
+        content: '☰';
+        color: skyblue;
+    }
+    nav{
+        display: none;
+        position: fixed;
+        top: 0;
+        margin-top: 60px;
+        width: 100%;
+        user-select: none;
+    }
+    nav ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    #burger:checked + label + nav{
+        display: block;
+        animation: show .01s ease;
+    }
+    #burger:checked +[for=burger]::before{
+        content: '⮾';
+        color: skyblue;
+    }
+}
+
+@keyframes show {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
